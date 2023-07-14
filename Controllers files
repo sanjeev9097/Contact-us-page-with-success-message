@@ -1,0 +1,36 @@
+const path = require('path');
+
+const rootDir = require('../util/path');
+
+exports.addContact = (req, res, next) => {
+    res.sendFile(path.join(rootDir, 'views', 'contact.html'));   
+}
+
+exports.success = (req, res, next) => {
+    //console.log(req.body);
+    res.sendFile(path.join(rootDir, 'views', 'success.html'));
+}
+
+
+
+BELOW IS THE ROUTES PART
+
+const exprees = require('express');
+
+const contact = require('../controllers/contact');
+
+const rootDir = require('../util/path');
+
+const path = require('path');
+
+const app1 = exprees.Router();
+
+app1.get('/', (req, res, next) => {
+    res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+});
+
+app1.get('/contact-us', contact.addContact);
+
+app1.use('/success',contact.success);
+
+module.exports = app1;
