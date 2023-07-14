@@ -1,0 +1,19 @@
+const contact = [];
+
+module.exports = class Contact {
+    constructor(name, email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    save() {
+        contact.push(this);
+    }
+
+    static fetchAll() {
+        return contact;
+    }
+}
+
+
+
